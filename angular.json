@@ -30,7 +30,23 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/ajv/dist/ajv.bundle.js",
+              "node_modules/jquery/dist/jquery.js",
+              "src/app/shared/ckeditor/ckeditor.js",
+              "node_modules/echarts/dist/echarts.min.js",
+              "src/app/shared/plugins/echarts-wordcloud.min.js",
+              "src/app/shared/china.js",
+              "src/app/shared/province/shandong.js",
+              "src/app/shared/province/guangdong.js",
+              "src/app/shared/dark.js",
+              "src/app/shared/infographic.js",
+              "src/app/shared/macarons.js",
+              "src/app/shared/roma.js",
+              "src/app/shared/shine.js",
+              "src/app/shared/vintage.js",
+              "src/app/shared/lsd.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -61,17 +77,30 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "runtime-test:build"
+            "browserTarget": "runtime-test:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
               "browserTarget": "runtime-test:build:production"
+            },
+            "hmr": {
+              "browserTarget": "runtime-test:build:hmr",
+              "hmr": true
             }
           }
         },
@@ -95,7 +124,9 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/ajv/dist/ajv.bundle.js"
+            ]
           }
         },
         "lint": {
@@ -124,6 +155,43 @@
           }
         }
       }
-    }},
-  "defaultProject": "runtime-test"
+    }
+  },
+  "defaultProject": "runtime-test",
+  "schematics": {
+    "ng-alain:module": {
+      "routing": true,
+      "spec": false
+    },
+    "ng-alain:list": {
+      "spec": false
+    },
+    "ng-alain:edit": {
+      "spec": false,
+      "modal": true
+    },
+    "ng-alain:view": {
+      "spec": false,
+      "modal": true
+    },
+    "ng-alain:curd": {
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "routing": true,
+      "spec": false
+    },
+    "@schematics/angular:component": {
+      "spec": false,
+      "flat": false,
+      "inlineStyle": true,
+      "inlineTemplate": false
+    },
+    "@schematics/angular:directive": {
+      "spec": false
+    },
+    "@schematics/angular:service": {
+      "spec": false
+    }
+  }
 }
