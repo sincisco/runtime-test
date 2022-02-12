@@ -42,7 +42,7 @@
     "@delon/theme": "^8.5.1",
     "@delon/util": "^8.5.1",
     "@types/jquery": "^3.3.31",
-    "ajv": "^6.10.2",
+    "ajv": "^6.12.3",
     "echarts": "^4.4.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
